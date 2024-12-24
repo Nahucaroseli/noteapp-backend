@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,6 +31,11 @@ public class NoteController {
 	@GetMapping("/notes")
 	public List<Note> getNotes(){
 		return service.getNotes();
+	}
+	
+	@GetMapping("/notes/{id}")
+	public Optional<Note> getNoteById(@PathVariable Long id) {
+		return this.service.getNote(id);
 	}
 	
 	@PostMapping

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,13 @@ public class NoteService implements IService{
 	@Override
 	public Note archiveNote(Note n) {
 		return repo.save(n);
+	}
+
+
+	@Override
+	public Optional<Note> getNote(Long id) {
+
+		return repo.findById(id);
 	}
 
 }
