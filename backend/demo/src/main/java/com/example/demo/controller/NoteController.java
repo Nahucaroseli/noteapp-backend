@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.DTO.NoteDTO;
 import com.example.demo.model.Note;
 import com.example.demo.service.NoteService;
 
@@ -38,19 +39,19 @@ public class NoteController {
 		return this.service.getNote(id);
 	}
 	
-	@PostMapping
-	public Note addNote(@RequestBody Note n) {
+	@PostMapping("/notes")
+	public Note addNote(@RequestBody NoteDTO n) {
 		return this.service.addNote(n);
 	}
 	
 	
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/notes/{id}")
 	public void deleteNote(@PathVariable Long id) {
 		this.service.deleteNote(id);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/notes/{id}")
 	public Note editNote(@RequestBody Note n) {
 		return this.service.editNote(n);
 	}

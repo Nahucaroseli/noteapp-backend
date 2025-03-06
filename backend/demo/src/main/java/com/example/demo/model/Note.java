@@ -5,8 +5,11 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Note")
 public class Note {
 	
 	@Id
@@ -16,6 +19,9 @@ public class Note {
 	private boolean archived;
 	private List<String> categories;
 	
+	@ManyToOne()
+	private Usuario usuario;
+	
 	
 	public Note() {
 		super();
@@ -23,13 +29,27 @@ public class Note {
 	
 	
 	public Note(Long id, String title, String description,boolean archived
-			,ArrayList<String> list) {
+			,ArrayList<String> list, Usuario usuario) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.archived = archived;
 		this.categories = list;
+		this.usuario = usuario;
+	}
+
+
+	
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 
