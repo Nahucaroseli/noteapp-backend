@@ -41,7 +41,6 @@ public class NoteService implements INService{
 			nueva.setArchived(n.isArchived());
 			nueva.setCategories(n.getCategories());
 			nueva.setDescription(n.getDescription());
-			nueva.setId(n.getId());
 			nueva.setTitle(n.getTitle());
 			return repo.save(nueva);
 		}
