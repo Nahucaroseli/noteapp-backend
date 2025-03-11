@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,6 +30,16 @@ public class UserService{
 
 	public Usuario getUserById(Long id) {
 		return repository.findById(id).get();
+	}
+	
+	public Usuario signIn(Usuario u) {
+		Optional<Usuario> usuario = repository.getUserByUsername(u.getUsername());
+		if(u.getPassword().equals(u.getPassword())) {
+			System.out.println(usuario.get().getUsername());
+			return usuario.get();
+		}
+		return null;
+		
 	}
 	
 	

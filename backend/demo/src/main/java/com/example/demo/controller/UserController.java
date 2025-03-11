@@ -38,6 +38,10 @@ public class UserController {
 		return service.register(u);
 			
 	}
+	@PostMapping("/users/login")
+	public Usuario logIn(@RequestBody Usuario u) {
+		return service.signIn(u);
+	}
 	
 
 }
