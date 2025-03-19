@@ -13,26 +13,25 @@ import com.example.demo.repository.NoteRepository;
 
 
 @Service
-public class NoteService implements INService{
+public class NoteService{
 	
+	@Autowired
 	private NoteRepository repo;
 	
 	@Autowired
 	private UserService userService;
 	
-	
-	public NoteService(NoteRepository r) {
-		this.repo = r;
-	}
-	
 
-	@Override
-	public List<Note> getNotes() {
 
-		return repo.findAll();
+	public List<Note> getNotesByUserId(Long id) {
+		Usuario usuario = userService.getUserById(id);
+		if(usuario!=null) {
+			return repo.getNotesByUserId(usuario);
+		}
+		return null;
 	}
 
-	@Override
+
 	public Note addNote(NoteDTO n) {
 		Usuario user = userService.getUserById(n.getUsuario_id());
 		if(user!=null) {
@@ -47,24 +46,24 @@ public class NoteService implements INService{
 		return null;
 	}
 
-	@Override
+
 	public Note editNote(Note n) {
 		
 		return repo.save(n);
 	}
 
-	@Override
+
 	public void deleteNote(Long id) {
 		repo.deleteById(id);
 	}
 
-	@Override
+
 	public Note archiveNote(Note n) {
 		return repo.save(n);
 	}
 
 
-	@Override
+
 	public Optional<Note> getNote(Long id) {
 
 		return repo.findById(id);

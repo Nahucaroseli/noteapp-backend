@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +23,14 @@ import com.example.demo.service.NoteService;
 @CrossOrigin("*")
 public class NoteController {
 	
+	@Autowired
 	private NoteService service;
 	
-	public NoteController(NoteService s) {
-		this.service = s;
-	}
 	
 	
-	@GetMapping("/notes")
-	public List<Note> getNotes(){
-		return service.getNotes();
+	@GetMapping("/users/{id_usuario}/notes")
+	public List<Note> getNotesByUserId(@PathVariable Long id_usuario){
+		return service.getNotesByUserId(id_usuario);
 	}
 	
 	@GetMapping("/notes/{id}")

@@ -22,8 +22,19 @@ public class UserService{
 	public List<Usuario> getUsers(){
 		return repository.findAll();
 	}
+	
+//	
+//	public Usuario deleteUserById(Long id) {
+//		Usuario usuario = repository.findById(id).get();
+//		if(usuario!=null) {
+//			repository.deleteById(id);
+//			return usuario;
+//		}
+//		return null;
+//	}
 
 	public Usuario register(Usuario u) {
+		System.out.println(u.getUsername());
 		u.setPassword(new BCryptPasswordEncoder().encode(u.getPassword()));
 		return repository.save(u);
 	}
