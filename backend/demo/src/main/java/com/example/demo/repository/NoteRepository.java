@@ -16,4 +16,7 @@ public interface NoteRepository extends JpaRepository<Note,Long>{
 	@Query("SELECT n FROM Note n WHERE n.usuario=:id")
 	List<Note> getNotesByUserId(@Param("id") Usuario id);
 
+	@Query("SELECT COUNT(n) FROM Note n")
+	int getNotesTotal();
+
 }

@@ -69,4 +69,9 @@ public class NoteService{
 		return repo.findById(id);
 	}
 
+
+	public int getNotesTotal() {
+		return repo.getNotesTotal();
+	}
+
 }

@@ -44,6 +44,10 @@ public class NoteController {
 	}
 	
 	
+	@GetMapping("/notes/total")
+	public int getNotesTotal() {
+		return this.service.getNotesTotal();
+	}
 	
 	@DeleteMapping("/notes/{id}")
 	public void deleteNote(@PathVariable Long id) {
