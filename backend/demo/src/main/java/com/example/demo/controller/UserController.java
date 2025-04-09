@@ -40,10 +40,17 @@ public class UserController {
 		return service.register(u);
 			
 	}
+	
 	@PostMapping("/users/login")
 	public Usuario logIn(@RequestBody Usuario u) {
 		return service.signIn(u);
 	}
+	
+	@DeleteMapping("/users/{id}")
+	public Usuario deleteUserById(@PathVariable Long id) {
+		return service.deleteUserById(id);
+	}
+	
 	
 
 }
