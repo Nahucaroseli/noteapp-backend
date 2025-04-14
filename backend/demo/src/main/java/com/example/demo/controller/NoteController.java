@@ -28,6 +28,13 @@ public class NoteController {
 	
 	
 	
+	
+	
+	@GetMapping("/notes")
+	public List<Note> getNotes() {
+		return this.service.getNotes();
+	}
+	
 	@GetMapping("/users/{id_usuario}/notes")
 	public List<Note> getNotesByUserId(@PathVariable Long id_usuario){
 		return service.getNotesByUserId(id_usuario);

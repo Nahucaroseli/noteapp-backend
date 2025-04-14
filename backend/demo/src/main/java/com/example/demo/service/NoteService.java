@@ -74,4 +74,9 @@ public class NoteService{
 		return repo.getNotesTotal();
 	}
 
+
+	public List<Note> getNotes() {
+		return repo.findAll();
+	}
+
 }
